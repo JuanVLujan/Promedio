@@ -22,6 +22,11 @@ public class Promedio_Asignaturas {
        creditos = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese el número de créditos de la asignatura"));
        nnotas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de notas a calcular"));
        sw2 = Integer.parseInt(JOptionPane.showInputDialog(null,"¿Todas las notas tienen el mismo valor? 1-> Si  2-> No"));
+       while (sw2 <1 || sw2 > 2)
+       {
+           JOptionPane.showMessageDialog(null, "Selección invalida");
+           sw2 = Integer.parseInt(JOptionPane.showInputDialog(null,"¿Todas las notas tienen el mismo valor? 1-> Si  2-> No"));
+       }
        while (nnotas <= 0)
                {
                    nnotas = Integer.parseInt(JOptionPane.showInputDialog(null,"La cantidad de notas ingresadas no es valida, inserte el número de notas a promediar"));
@@ -50,6 +55,7 @@ public class Promedio_Asignaturas {
               }
               porcentaje = Float.parseFloat(JOptionPane.showInputDialog("Ingrese el PORCENTAJE de la nota #(" + (contador1+1) + "/" + nnotas + ")" ));
               nota = Float.parseFloat(JOptionPane.showInputDialog(null,"Ingrese la CALIFICACIÓN de la nota #(" + (contador1+1) + "/" + nnotas + ")"));
+              acum_porcentaje = acum_porcentaje + porcentaje;
               while (nota > 5 || nota < 0)
                {
                    nota = Float.parseFloat(JOptionPane.showInputDialog(null,"La calificación ingresada no es valida, ingrese la CALIFICACIÓN de la nota # (" + (contador1+1)));
@@ -67,7 +73,6 @@ public class Promedio_Asignaturas {
                   }
                   break;
               }else{
-              acum_porcentaje = acum_porcentaje + porcentaje;
               suma = suma + (nota*(porcentaje/100));
               contador1++;
               }
@@ -75,7 +80,7 @@ public class Promedio_Asignaturas {
         default:
        }
        acum_texto1 = asignatura + " es: " + promedio + "\n";
-       acum_texto2 = acum_texto2 + acum_texto1 + "/n";
+       acum_texto2 = acum_texto2 + acum_texto1 + "\n";
        JOptionPane.showMessageDialog(null,acum_texto2);
        sw1 = Integer.parseInt(JOptionPane.showInputDialog(null, "¿Desea calcular otra asignatura?\n1-> Si\nOtro-> No"));
        acum_creditos = acum_creditos + creditos;
